@@ -17,16 +17,21 @@ def browser():
         timeout = ConfigProvider().getint("ui", "timeout")
         browser_name = ConfigProvider().get("ui", "browser_name")
 
+        driver = None
+
         if browser_name == 'chrome':
-            browser = webdriver.Chrome(
-                service=Service(ChromeDriverManager().install()))
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.binary_location = "/usr/bin/chromium-gost"
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            driver = webdriver.Chrome(options=chrome_options)
         else:
-            browser = webdriver.Firefox(
+            driver = webdriver.Firefox(
                 service=FirefoxService(GeckoDriverManager().install()))
 
-        browser.implicitly_wait(timeout)
-        browser.maximize_window()
-        yield browser
+        driver.implicitly_wait(timeout)
+        driver.maximize_window()
+        yield driver
 
     with allure.step("Закрыть браузер"):
-        browser.quit()
+        driver.quit()

@@ -8,6 +8,8 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 
 from configuration.ConfigProvired import ConfigProvider
+from api.NominatimOSM import NominatimOSM
+from test_data.DataProvider import DataProvider
 
 
 @pytest.fixture
@@ -35,3 +37,14 @@ def browser():
 
     with allure.step("Закрыть браузер"):
         driver.quit()
+
+
+@pytest.fixture
+def api_client() -> NominatimOSM:
+    return NominatimOSM(
+        ConfigProvider().get("api", "base_url"),
+    )
+
+@pytest.fixture
+def test_data():
+    return DataProvider()

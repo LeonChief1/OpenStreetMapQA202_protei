@@ -1,8 +1,6 @@
 import requests
 import allure
-from selenium.webdriver.support.expected_conditions import none_of
-from ssh_import_id import user_agent
-from test_data.DataProvider import  DataProvider
+import pytest
 
 
 class NominatimOSM:
@@ -25,3 +23,23 @@ class NominatimOSM:
         resp.raise_for_status()
 
         return resp.text
+
+
+    def get_search_parametrize(self, q, format, polygon, addressdetails, limit, headers: dict = None) -> dict:
+
+        params = {
+            'q': q,
+            'format': format,
+            'polygon': polygon,
+            'addressdetails': addressdetails,
+            'limit': limit
+        }
+
+        path = "{nominatim}search?".format(nominatim=self.base_url)
+        resp = requests.get(path, headers=headers, params=params)
+        resp.raise_for_status()
+
+        if format == 'xml':
+            return resp.text
+        else:
+            return resp.json()

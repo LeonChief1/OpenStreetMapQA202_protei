@@ -1,7 +1,7 @@
 # OpenStreetMapQA202_protei
 
 ### Шаги
-1. Склонировать проект ``
+1. Склонировать проект `https://github.com/LeonChief1/OpenStreetMapQA202_protei.git`
 2. Установить все зависимости `pip install -r requirements.txt`
 3. Запустить тесты `python -m pytest`
 4. Сгенерировать отчет `allure generate allure-files -o allure-report`

@@ -43,3 +43,23 @@ class NominatimOSM:
             return resp.text
         else:
             return resp.json()
+
+
+    def get_reverse_parametrize(self, format, lat, lon, zoom, addressdetails, headers: dict = None) -> dict:
+
+        params = {
+            'format': format,
+            'lat': lat,
+            'lon': lon,
+            "zoom": zoom,
+            'addressdetails': addressdetails
+        }
+
+        path = "{nominatim}reverse?".format(nominatim=self.base_url)
+        resp = requests.get(path, headers=headers, params=params)
+        resp.raise_for_status()
+
+        if format == 'xml':
+            return resp.text
+        else:
+            return resp.json()

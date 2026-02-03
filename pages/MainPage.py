@@ -11,29 +11,35 @@ from test_data.DataProvider import DataProvider
 
 class MainPage:
 
-    def __init__(self, driver: WebDriver) -> None:
+    def __init__(self, driver: WebDriver):
+        """Конструктор"""
         self.__driver = driver
         self.url = ConfigProvider().get_ui_url()
         self.data = DataProvider().get_user_agent()
         self.data = DataProvider().get_accept()
 
     @allure.step("Перейти на страницу Nominatim")
-    def go(self):
+    def go(self) -> None:
+        '''Функция к переходу на страницу'''
         self.__driver.get(self.url)
 
     @allure.step("Получить текущий URL")
     def get_current_url(self) -> str:
+        '''Функция получения текущего URL страницы'''
         return self.__driver.current_url
 
     @allure.step("Открыть дополнительные настройки")
-    def advanced_options(self):
+    def advanced_options(self) -> None:
+        '''Функция открытия дополнительных настроек на странице Nominatim'''
         self.__driver.find_element(By.CSS_SELECTOR, "#searchAdvancedOptions").click()
 
     @allure.step("Написать слово в поисковике {country}")
-    def search_input(self, country):
+    def search_input(self, country) -> None:
+        '''Функция написания слова в поисковик поля search на странице Nominatim'''
         self.__driver.find_element(By.CSS_SELECTOR, "#q").send_keys(country)
 
     @allure.step("Нажать поиск")
-    def click_search_button(self):
+    def click_search_button(self) -> None:
+        '''Функция нажатия на кнопку поиска'''
         self.__driver.find_element(By.CSS_SELECTOR, "button.btn.btn-primary.btn-sm").click()
         WebDriverWait(self.__driver, 4).until(EC.url_contains(self.url + "ui/search.html?q="))

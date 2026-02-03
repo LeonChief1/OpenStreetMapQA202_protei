@@ -1,5 +1,3 @@
-import time
-from time import sleep
 import pytest
 
 import allure
@@ -27,7 +25,7 @@ from pages.MainPage import MainPage
     ('bar2bados'),
     ('A' * 100),
 ])
-def ui_nominatim_test(browser, country, test_data: dict):
+def ui_nominatim_test(browser, country):
 
     main_page = MainPage(browser)
     main_page.go()

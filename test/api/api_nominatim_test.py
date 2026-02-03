@@ -111,7 +111,6 @@ class Test_Api_Nominatim_test_parametrize:
         ddt = api_client.get_search_parametrize(q, format, polygon, addressdetails, limit, headers)
         allure.attach(f"Ответ {ddt}", name="Поиск параматризации", attachment_type=allure.attachment_type.JSON)
 
-
     @pytest.mark.parametrize('format, lat, lon, zoom, addressdetails', [
         ('xml', '-9.911374', '-53.580959', '18', '1'),
         ('xml', '82.689336', '-31.809395', '50', '0'),

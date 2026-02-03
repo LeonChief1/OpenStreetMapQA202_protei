@@ -12,6 +12,8 @@ class NominatimOSM:
     @allure.step("Запрос статуса сервера в формате json")
     def get_status_Nominatim_json(self, headers: dict = None) -> dict:
 
+        """Функция получения статуса сервера Nominatim в формате json"""
+
         path = "{nominatim}status?format=json".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers)
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.URI_LIST)
@@ -22,6 +24,8 @@ class NominatimOSM:
     @allure.step("Запрос статуса сервера в формате text")
     def get_status_Nominatim_text(self, headers: dict = None) -> str:
 
+        """Функция получения статуса сервера Nominatim в формате text"""
+
         path = "{nominatim}status?format=text".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers)
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.URI_LIST)
@@ -31,6 +35,8 @@ class NominatimOSM:
 
     @allure.step("Поиск в параметризации по параметрам: {q}, {format}, {polygon}, {addressdetails}, {limit}")
     def get_search_parametrize(self, q: str, format: str, polygon: int, addressdetails: int, limit: int, headers: dict = None) -> dict:
+
+        """Функция поиска по параметризации и получения ответа в json/xml"""
 
         params = {
             'q': q,
@@ -52,6 +58,8 @@ class NominatimOSM:
 
     @allure.step("Реверс с параметризациией по парамтерам: {format}, {lat}, {lon}, {zoom}. {addressdetails}")
     def get_reverse_parametrize(self, format: str, lat: int, lon: int, zoom: int, addressdetails: int, headers: dict = None) -> dict:
+
+        """Функция реверса по параметризации и получения ответа в json/xml"""
 
         params = {
             'format': format,

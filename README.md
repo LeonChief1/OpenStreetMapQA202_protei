@@ -28,3 +28,14 @@
     - test_config.ini - настройки для тестов
 - ./testdata - провайдер тестовых данных
     - test_data.json
+
+### Если не работает UI тесты
+Я использую Chromium-ghost и тесты могут не запускаться на обычном chrome.
+Для этого можно попробовать 
+- Скачиваем драйвер для версии 127:
+1. `cd /tmp`
+2. `wget https://storage.googleapis.com/chrome-for-testing-public/127.0.6533.72/linux64/chromedriver-linux64.zip`
+3. `unzip chromedriver-linux64.zip`
+4. `chmod +x chromedriver-linux64/chromedriver`
+5. Копируем в системный путь `sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver_127`
+6. Проверяем: `chromedriver_127 --version`

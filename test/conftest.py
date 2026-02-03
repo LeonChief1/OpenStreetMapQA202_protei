@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.chrome.options import Options
 
 from configuration.ConfigProvired import ConfigProvider
 from api.NominatimOSM import NominatimOSM
@@ -22,11 +23,12 @@ def browser():
         driver = None
 
         if browser_name == 'chrome':
-            chrome_options = webdriver.ChromeOptions()
+            chrome_options = Options()
             chrome_options.binary_location = "/usr/bin/chromium-gost"
             chrome_options.add_argument("--no-sandbox")
             chrome_options.add_argument("--disable-dev-shm-usage")
-            driver = webdriver.Chrome(options=chrome_options)
+            service = Service("/usr/local/bin/chromedriver_127")
+            driver = webdriver.Chrome(service=service, options=chrome_options)
         else:
             driver = webdriver.Firefox(
                 service=FirefoxService(GeckoDriverManager().install()))
@@ -42,7 +44,7 @@ def browser():
 @pytest.fixture
 def api_client() -> NominatimOSM:
     return NominatimOSM(
-        ConfigProvider().get("api", "base_url"),
+        ConfigProvider().get_api_url()
     )
 
 @pytest.fixture

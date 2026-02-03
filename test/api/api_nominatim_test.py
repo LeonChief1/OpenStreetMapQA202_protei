@@ -4,7 +4,7 @@ import pytest
 from api.NominatimOSM import NominatimOSM
 
 
-@allure.epic("openstreetmap")
+@allure.epic("api_nominatim")
 @allure.severity("blocker")
 class Test_Api_Nominatim_test_status:
 

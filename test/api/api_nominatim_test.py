@@ -4,7 +4,7 @@ import pytest
 from api.NominatimOSM import NominatimOSM
 
 
-@allure.epic("api_nominatim")
+@allure.epic("api_nominatim_status")
 @allure.severity("blocker")
 class Test_Api_Nominatim_test_status:
 
@@ -32,7 +32,7 @@ class Test_Api_Nominatim_test_status:
         test = api_client.get_status_Nominatim_text(headers)
         allure.attach(f"Ответ {test}", name="Состояние сервера в текстовом формате", attachment_type=allure.attachment_type.TEXT)
 
-@allure.epic("openstreetmap")
+@allure.epic("api_nominatim_parametrized")
 @allure.severity("blocker")
 class Test_Api_Nominatim_test_parametrize:
 

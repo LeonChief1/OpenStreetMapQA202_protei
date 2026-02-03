@@ -8,7 +8,7 @@
 5. Открыть отчет `allure open allure-report`
 
 - Или перейти в директорию `cd allure-report`
-- Запустить сервер http `pythom -m http.server 8080`
+- Запустить сервер http `python -m http.server 8080`
 - Зайди на страницу с ответочм по ссылке: `http://localhost:8080`
 
 ### Стек:

@@ -14,6 +14,7 @@ class NominatimOSM:
 
         path = "{nominatim}status?format=json".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers)
+        allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.URI_LIST)
         resp.raise_for_status()
 
         return resp.json()
@@ -23,6 +24,7 @@ class NominatimOSM:
 
         path = "{nominatim}status?format=text".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers)
+        allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.URI_LIST)
         resp.raise_for_status()
 
         return resp.text
@@ -40,6 +42,7 @@ class NominatimOSM:
 
         path = "{nominatim}search?".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers, params=params)
+        allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.URI_LIST)
         resp.raise_for_status()
 
         if format == 'xml':
@@ -60,6 +63,7 @@ class NominatimOSM:
 
         path = "{nominatim}reverse?".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers, params=params)
+        allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.URI_LIST)
         resp.raise_for_status()
 
         if format == 'xml':

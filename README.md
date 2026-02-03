@@ -7,6 +7,10 @@
 4. Сгенерировать отчет `allure generate allure-files -o allure-report`
 5. Открыть отчет `allure open allure-report`
 
+- Или перейти в директорию `cd allure-report`
+- Запустить сервер http `pythom -m http.server 8080`
+- Зайди на страницу с ответочм по ссылке: `http://localhost:8080`
+
 ### Стек:
 - pytest
 - selenium

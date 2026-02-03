@@ -36,5 +36,4 @@ class MainPage:
     @allure.step("Нажать поиск")
     def click_search_button(self):
         self.__driver.find_element(By.CSS_SELECTOR, "button.btn.btn-primary.btn-sm").click()
-        WebDriverWait(self.__driver, 10).until(EC.url_contains(self.url + "ui/search.html?q="))
-
+        WebDriverWait(self.__driver, 4).until(EC.url_contains(self.url + "ui/search.html?q="))

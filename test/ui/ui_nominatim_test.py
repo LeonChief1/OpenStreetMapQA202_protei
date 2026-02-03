@@ -19,7 +19,13 @@ from pages.MainPage import MainPage
     ('Afghanistan'),
     ('Honduras'),
     ('Test'),
-    (''),
+    (' '),
+    ('BARBADOS'),
+    ('barbados'),
+    ('bar#bados'),
+    ('barbados1'),
+    ('bar2bados'),
+    ('A' * 100),
 ])
 def ui_nominatim_test(browser, country, test_data: dict):
 

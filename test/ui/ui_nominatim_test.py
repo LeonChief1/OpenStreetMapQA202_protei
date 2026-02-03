@@ -1,5 +1,6 @@
 import time
 from time import sleep
+import pytest
 
 import allure
 from pages.MainPage import MainPage
@@ -10,13 +11,25 @@ from pages.MainPage import MainPage
 @allure.feature("nominatim")
 @allure.story("Проверка сайта на поисковик")
 @allure.title("проверка на поиск")
-def ui_nominatim_test(browser, test_data: dict):
+@pytest.mark.parametrize('country', [
+    ('New-Yourk'),
+    ('Barbados'),
+    ('Tuvalu'),
+    ('Chile'),
+    ('Afghanistan'),
+    ('Honduras'),
+    ('Test'),
+    (''),
+])
+def ui_nominatim_test(browser, country, test_data: dict):
 
     main_page = MainPage(browser)
     main_page.go()
     main_page.advanced_options()
-    main_page.search_input("New-Yourk")
+    main_page.search_input(country)
     main_page.click_search_button()
     current_url = main_page.get_current_url()
-    with allure.step("Проверить, что URL " + current_url + " заканчивается на ui/search.html?q=New-Yourk"):
-        assert current_url.endswith("ui/search.html?q=New-Yourk")
+
+    with allure.step(f"Проверить, что URL содержит параметр поиска для '{country}'"):
+        assert "ui/search.html" in current_url, f"URL должен содержать 'ui/search.html'"
+        assert f"q={country}" in current_url, f"URL должен содержать 'q={country}'"

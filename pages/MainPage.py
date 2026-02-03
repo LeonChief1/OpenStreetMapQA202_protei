@@ -26,7 +26,14 @@ class MainPage:
     @allure.step("Получить текущий URL")
     def get_current_url(self) -> str:
         '''Функция получения текущего URL страницы'''
-        return self.__driver.current_url
+        current_url = self.__driver.current_url
+
+        allure.attach(
+            current_url,
+            name="страница",
+            attachment_type=allure.attachment_type.URI_LIST
+        )
+        return current_url
 
     @allure.step("Открыть дополнительные настройки")
     def advanced_options(self) -> None:
@@ -43,3 +50,19 @@ class MainPage:
         '''Функция нажатия на кнопку поиска'''
         self.__driver.find_element(By.CSS_SELECTOR, "button.btn.btn-primary.btn-sm").click()
         WebDriverWait(self.__driver, 4).until(EC.url_contains(self.url + "ui/search.html?q="))
+
+    @allure.step("Выполняем скрпиншот {screenshot_name}")
+    def save_screenshot(self, screenshot_name):
+        screenshot = self.__driver.get_screenshot_as_png()
+
+        allure.attach(
+            screenshot,
+            name=screenshot_name,
+            attachment_type=allure.attachment_type.PNG
+        )
+
+        # Также сохраняем в файл (опционально)
+        screenshot_path = f"screenshots/{screenshot_name}.png"
+        with open(screenshot_path, 'wb') as f:
+            f.write(screenshot)
+        return screenshot_path

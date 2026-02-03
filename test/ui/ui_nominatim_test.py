@@ -1,3 +1,5 @@
+from time import sleep
+
 import pytest
 
 import allure
@@ -33,6 +35,7 @@ def ui_nominatim_test(browser, country):
     main_page.search_input(country)
     main_page.click_search_button()
     current_url = main_page.get_current_url()
+    main_page.save_screenshot(country)
 
     with allure.step(f"Проверить, что URL содержит параметр поиска для '{country}'"):
         assert "ui/search.html" in current_url, f"URL должен содержать 'ui/search.html'"

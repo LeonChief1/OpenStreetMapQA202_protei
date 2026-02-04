@@ -61,8 +61,4 @@ class MainPage:
             attachment_type=allure.attachment_type.PNG
         )
 
-        # Также сохраняем в файл (опционально)
-        screenshot_path = f"screenshots/{screenshot_name}.png"
-        with open(screenshot_path, 'wb') as f:
-            f.write(screenshot)
-        return screenshot_path
+        return screenshot

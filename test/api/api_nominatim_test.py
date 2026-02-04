@@ -6,11 +6,12 @@ from api.NominatimOSM import NominatimOSM
 
 @allure.epic("api_nominatim_status")
 @allure.severity("blocker")
+@pytest.mark.api
 class Test_Api_Nominatim_test_status:
 
-    @allure.feature("nominatim")
     @allure.story("статус сервера")
     @allure.title("статус по json")
+    @pytest.mark.usefixtures("api_client", "test_data")
     def test_status_nominatim_json(self, api_client: NominatimOSM, test_data):
         headers = {
             "User-Agent": test_data.get_user_agent(),
@@ -20,9 +21,9 @@ class Test_Api_Nominatim_test_status:
         test = api_client.get_status_Nominatim_json(headers)
         allure.attach(f"Ответ {test}", name="Состояние сервера в json формате", attachment_type=allure.attachment_type.JSON)
 
-    @allure.feature("nominatim")
     @allure.story("статус сервера")
     @allure.title("статус по text")
+    @pytest.mark.usefixtures("api_client", "test_data")
     def test_status_nominatim_text(self, api_client: NominatimOSM, test_data):
         headers = {
             "User-Agent": test_data.get_user_agent(),
@@ -34,6 +35,7 @@ class Test_Api_Nominatim_test_status:
 
 @allure.epic("api_nominatim_parametrized")
 @allure.severity("blocker")
+@pytest.mark.api
 class Test_Api_Nominatim_test_parametrize:
 
     @pytest.mark.parametrize('q, format, polygon, addressdetails, limit', [
@@ -100,9 +102,9 @@ class Test_Api_Nominatim_test_parametrize:
         ('Кириллица', 'json', '1', '1', '1'),  # Кириллица в запросе
         ('München', 'json', '0', '0', '0'),  # Unicode символы
     ])
-    @allure.feature("nominatim")
     @allure.story("Прямое геокодирование по параметризации (ddt)")
     @allure.title("Получения полного списка стран по параматризации search")
+    @pytest.mark.usefixtures("api_client", "test_data")
     def test_search_ddt(self, api_client: NominatimOSM, test_data, q, format, polygon, addressdetails, limit):
         headers = {
             "User-Agent": test_data.get_user_agent(),
@@ -165,9 +167,9 @@ class Test_Api_Nominatim_test_parametrize:
         ('Кириллица', '-24.743005', '35.390495', '1', '1'),  # Кириллица в формате
         ('München', '-24.743005', '35.390495', '0', '0'),  # Unicode в формате
         ])
-    @allure.feature("nominatim")
     @allure.story("Обратные геокодирование по параметризации (ddt)")
     @allure.title("Получения полного списка стран по параматризации reverse")
+    @pytest.mark.usefixtures("api_client", "test_data")
     def test_reverse_ddt(self, api_client: NominatimOSM, test_data, format, lat, lon, zoom, addressdetails):
         headers = {
             "User-Agent": test_data.get_user_agent(),

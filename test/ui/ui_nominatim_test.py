@@ -8,9 +8,9 @@ from pages.MainPage import MainPage
 
 @allure.epic("ui_nominatim_test")
 @allure.severity("blocker")
-@allure.feature("nominatim")
 @allure.story("Проверка сайта на поисковик")
 @allure.title("проверка на поиск")
+@pytest.mark.usefixtures("browser")
 @pytest.mark.parametrize('country', [
     ('New-Yourk'),
     ('Barbados'),

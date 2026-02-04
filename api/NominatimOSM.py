@@ -1,6 +1,7 @@
 import requests
 import allure
 import pytest
+from duplicity.globals import remove_time
 
 
 class NominatimOSM:
@@ -56,10 +57,23 @@ class NominatimOSM:
             self.api_context["response"] = resp
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.TEXT)
 
-        if format == 'xml':
+        if format.lower().strip() in ['json', 'jsonv2']:
+            try:
+                return {"error": True, "status_code": resp.status_code, "message": resp.text}
+            except:
+                pass
+
             return resp.text
-        else:
-            return resp.json()
+
+        try:
+            if format.lower().strip() in ['json', 'jsonv2', 'geojson', 'geocodejson']:
+                return resp.json()
+            elif format.lower().strip() == 'xml':
+                return resp.text
+            else:
+                return resp.text
+        except requests.exceptions.JSONDecodeError:
+            return resp.text
 
     @allure.step("Реверс с параметризациией по парамтерам: {format}, {lat}, {lon}, {zoom}. {addressdetails}")
     def get_reverse_parametrize(self, format: str, lat: int, lon: int, zoom: int, addressdetails: int, headers: dict = None) -> dict:
@@ -80,7 +94,20 @@ class NominatimOSM:
             self.api_context["response"] = resp
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.TEXT)
 
-        if format == 'xml':
+        if format.lower().strip() in ['json', 'jsonv2']:
+            try:
+                return {"error": True, "status_code": resp.status_code, "message": resp.text}
+            except:
+                pass
+
             return resp.text
-        else:
-            return resp.json()
+
+        try:
+            if format.lower().strip() in ['json', 'jsonv2', 'geojson', 'geocodejson']:
+                return resp.json()
+            elif format.lower().strip() == 'xml':
+                return resp.text
+            else:
+                return resp.text
+        except requests.exceptions.JSONDecodeError:
+            return resp.text

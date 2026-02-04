@@ -1,3 +1,5 @@
+from http.client import responses
+
 import allure
 import pytest
 
@@ -110,8 +112,14 @@ class Test_Api_Nominatim_test_parametrize:
             "User-Agent": test_data.get_user_agent(),
             "Accept": test_data.get_accept()
         }
-        ddt = api_client.get_search_parametrize(q, format, polygon, addressdetails, limit, headers)
-        allure.attach(f"Ответ {ddt}", name="Поиск параматризации", attachment_type=allure.attachment_type.JSON)
+        response = api_client.get_search_parametrize(q, format, polygon, addressdetails, limit, headers)
+        with allure.step("Проверка валдиности формата"):
+            valid_formats = ["xml", "geojson", "geocodejson", "json", "jsonv2"]
+            assert format is not None, "Формат не может быть None"
+            assert format.strip() != "", "Формат не может быть пустой строкой или состоять только из пробелов"
+            normalized_format = format.strip().lower()
+            assert normalized_format in valid_formats, f"Формат должен быть одним из {valid_formats}. Получено: '{format}' (нормализовано: '{normalized_format}')"
+        allure.attach(f"Ответ {response}", name="Поиск параматризации", attachment_type=allure.attachment_type.JSON)
 
     @pytest.mark.parametrize('format, lat, lon, zoom, addressdetails', [
         ('xml', '-9.911374', '-53.580959', '18', '1'),
@@ -175,5 +183,20 @@ class Test_Api_Nominatim_test_parametrize:
             "User-Agent": test_data.get_user_agent(),
             "Accept": test_data.get_accept()
         }
-        ddt = api_client.get_reverse_parametrize(format, lat, lon, zoom, addressdetails, headers)
-        allure.attach(f"Ответ {ddt}", name="Поиск параматризации", attachment_type=allure.attachment_type.JSON)
+        response = api_client.get_reverse_parametrize(format, lat, lon, zoom, addressdetails, headers)
+        with allure.step("Проверка валдиности формата"):
+            valid_formats = ["xml", "geojson", "geocodejson", "json", "jsonv2"]
+            assert format is not None, f"Формат не может быть None, format: {format}"
+            assert format and format.strip(), f"Формат не может быть пустой строкой или состоять только из пробелов. format: {format}"
+            assert format and format.lower(), f"Формат должен быть в низком регистре."
+            normalized_format = format.lower().strip()
+            assert normalized_format in valid_formats, f"Формат должен быть одним из {valid_formats}. Получено: '{format}'"
+        with allure.step("Проверка широты"):
+            assert lat and lat.strip(), f"Широта не должна быть пустой. LAT: {lat}"
+            assert lat != "0", f"Широта не должна быть равна 0. LAT: {lat}"
+            assert lat != " ", f"Долгота не должна содержать пробел. LON: {lat}"
+        with allure.step("Проверка долготы"):
+            assert lon and lon.strip(), f"Долгота не должна быть пустой. LON: {lon}"
+            assert lon != "0", f"Долгота не должна быть равна 0. LON: {lon}"
+            assert lon != " ", f"Долгота не должна содержать пробел. LON: {lon}"
+        allure.attach(f"Ответ {response}", name="Поиск параматризации", attachment_type=allure.attachment_type.JSON)

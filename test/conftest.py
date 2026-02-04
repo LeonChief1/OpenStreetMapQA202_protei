@@ -1,6 +1,5 @@
 import allure
 import pytest
-from numpy.core.numeric import True_
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -13,9 +12,52 @@ from configuration.ConfigProvired import ConfigProvider
 from api.NominatimOSM import NominatimOSM
 from test_data.DataProvider import DataProvider
 
-@pytest.hookimpl(hookwrapper=True)
+
+@pytest.fixture
+def browser():
+    with allure.step("Открыть и настроить браузер"):
+
+        timeout = ConfigProvider().getint("ui", "timeout")
+        browser_name = ConfigProvider().get("ui", "browser_name")
+
+        driver = None
+
+        if browser_name == 'chrome':
+            chrome_options = Options()
+            chrome_options.binary_location = "/usr/bin/chromium-gost"
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            service = Service("/usr/local/bin/chromedriver_127")
+            driver = webdriver.Chrome(service=service, options=chrome_options)
+        else:
+            driver = webdriver.Firefox(
+                service=FirefoxService(GeckoDriverManager().install()))
+
+        driver.implicitly_wait(timeout)
+        driver.maximize_window()
+        yield driver
+
+    with allure.step("Закрыть браузер"):
+        driver.quit()
+
+
+@pytest.fixture
+def api_client(api_context) -> NominatimOSM:
+    return NominatimOSM(
+        ConfigProvider().get_api_url(),
+        api_context
+    )
+
+@pytest.fixture
+def test_data():
+    return DataProvider()
+
+@pytest.fixture
+def api_context():
+    return {}
+
+
 def pytest_exception_interact(node, call, report):
-    yield
 
     if report.failed and call.when == "call":
 
@@ -70,47 +112,3 @@ def pytest_exception_interact(node, call, report):
                 )
             except Exception:
                 pass
-
-
-@pytest.fixture
-def browser():
-    with allure.step("Открыть и настроить браузер"):
-
-        timeout = ConfigProvider().getint("ui", "timeout")
-        browser_name = ConfigProvider().get("ui", "browser_name")
-
-        driver = None
-
-        if browser_name == 'chrome':
-            chrome_options = Options()
-            chrome_options.binary_location = "/usr/bin/chromium-gost"
-            chrome_options.add_argument("--no-sandbox")
-            chrome_options.add_argument("--disable-dev-shm-usage")
-            service = Service("/usr/local/bin/chromedriver_127")
-            driver = webdriver.Chrome(service=service, options=chrome_options)
-        else:
-            driver = webdriver.Firefox(
-                service=FirefoxService(GeckoDriverManager().install()))
-
-        driver.implicitly_wait(timeout)
-        driver.maximize_window()
-        yield driver
-
-    with allure.step("Закрыть браузер"):
-        driver.quit()
-
-
-@pytest.fixture
-def api_client(api_context) -> NominatimOSM:
-    return NominatimOSM(
-        ConfigProvider().get_api_url(),
-        api_context
-    )
-
-@pytest.fixture
-def test_data():
-    return DataProvider()
-
-@pytest.fixture
-def api_context():
-    return {}

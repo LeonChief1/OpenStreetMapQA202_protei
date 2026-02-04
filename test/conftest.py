@@ -1,5 +1,6 @@
 import allure
 import pytest
+from numpy.core.numeric import True_
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -11,6 +12,64 @@ from selenium.webdriver.chrome.options import Options
 from configuration.ConfigProvired import ConfigProvider
 from api.NominatimOSM import NominatimOSM
 from test_data.DataProvider import DataProvider
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_exception_interact(node, call, report):
+    yield
+
+    if report.failed and call.when == "call":
+
+        browser = node.funcargs.get("browser")
+        if browser:
+            try:
+                screenshot = browser.get_screenshot_as_png()
+                current_url = browser.current_url
+
+                allure.attach(
+                    screenshot,
+                    name=f"screenshot_{node.name}",
+                    attachment_type=allure.attachment_type.PNG
+                )
+
+                allure.attach(
+                    current_url,
+                    name="Current URL",
+                    attachment_type=allure.attachment_type.URI_LIST
+                )
+
+            except Exception:
+                pass
+
+        api_context = node.funcargs.get("api_context")
+        if api_context and "response" in api_context:
+            try:
+                resp = api_context["response"]
+
+                allure.attach(
+                    resp.request.url,
+                    name="Request URL",
+                    attachment_type=allure.attachment_type.URI_LIST
+                )
+
+                allure.attach(
+                    str(resp.request.headers),
+                    name="Request Headers",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+
+                allure.attach(
+                    str(resp.status_code),
+                    name="Status Code",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+
+                allure.attach(
+                    resp.text,
+                    name="Response Body",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+            except Exception:
+                pass
 
 
 @pytest.fixture
@@ -42,11 +101,16 @@ def browser():
 
 
 @pytest.fixture
-def api_client() -> NominatimOSM:
+def api_client(api_context) -> NominatimOSM:
     return NominatimOSM(
-        ConfigProvider().get_api_url()
+        ConfigProvider().get_api_url(),
+        api_context
     )
 
 @pytest.fixture
 def test_data():
     return DataProvider()
+
+@pytest.fixture
+def api_context():
+    return {}

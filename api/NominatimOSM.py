@@ -6,8 +6,9 @@ import pytest
 class NominatimOSM:
 
     @allure.step("URL: {base_url}")
-    def __init__(self, base_url: str) -> None:
+    def __init__(self, base_url: str, api_context: dict = None) -> None:
         self.base_url = base_url
+        self.api_context = api_context
 
     @allure.step("Запрос статуса сервера в формате json")
     def get_status_Nominatim_json(self, headers: dict = None) -> dict:
@@ -16,6 +17,9 @@ class NominatimOSM:
 
         path = "{nominatim}status?format=json".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers)
+        if self.api_context is not None:
+            self.api_context["response"] = resp
+
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.TEXT)
 
         return resp.json()
@@ -27,6 +31,8 @@ class NominatimOSM:
 
         path = "{nominatim}status?format=text".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers)
+        if self.api_context is not None:
+            self.api_context["response"] = resp
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.TEXT)
 
         return resp.text
@@ -46,6 +52,8 @@ class NominatimOSM:
 
         path = "{nominatim}search?".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers, params=params)
+        if self.api_context is not None:
+            self.api_context["response"] = resp
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.TEXT)
 
         if format == 'xml':
@@ -68,6 +76,8 @@ class NominatimOSM:
 
         path = "{nominatim}reverse?".format(nominatim=self.base_url)
         resp = requests.get(path, headers=headers, params=params)
+        if self.api_context is not None:
+            self.api_context["response"] = resp
         allure.attach(f"Ответ {resp}", name="Код ответа", attachment_type=allure.attachment_type.TEXT)
 
         if format == 'xml':

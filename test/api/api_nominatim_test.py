@@ -101,8 +101,8 @@ class Test_Api_Nominatim_test_parametrize:
         ('A' * 100, 'json', '1', '0', '1'),
         ('Test', 'json' * 10, '0', '1', '0'),
         # Проверки кодировки
-        ('Кириллица', 'json', '1', '1', '1'),  # Кириллица в запросе
-        ('München', 'json', '0', '0', '0'),  # Unicode символы
+        ('кириллица', 'json', '1', '1', '1'),  # Кириллица в запросе
+        ('münchen', 'json', '0', '0', '0'),  # Unicode символы
     ])
     @allure.story("Прямое геокодирование по параметризации (ddt)")
     @allure.title("Получения полного списка стран по параматризации search")
@@ -115,10 +115,11 @@ class Test_Api_Nominatim_test_parametrize:
         response = api_client.get_search_parametrize(q, format, polygon, addressdetails, limit, headers)
         with allure.step("Проверка валдиности формата"):
             valid_formats = ["xml", "geojson", "geocodejson", "json", "jsonv2"]
-            assert format is not None, "Формат не может быть None"
-            assert format.strip() != "", "Формат не может быть пустой строкой или состоять только из пробелов"
-            normalized_format = format.strip().lower()
-            assert normalized_format in valid_formats, f"Формат должен быть одним из {valid_formats}. Получено: '{format}' (нормализовано: '{normalized_format}')"
+            assert format is not None, f"Формат не может быть None, format: {format}"
+            assert format == format.strip(), f"Формат не может быть пустой строкой или состоять только из пробелов. format: {format}"
+            assert format.islower(), f"Формат должен быть в нижнем регистре."
+            normalized_format = format.lower().strip()
+            assert normalized_format in valid_formats, f"Формат должен быть одним из {valid_formats}. Получено: '{format}'"
         allure.attach(f"Ответ {response}", name="Поиск параматризации", attachment_type=allure.attachment_type.JSON)
 
     @pytest.mark.parametrize('format, lat, lon, zoom, addressdetails', [
@@ -172,8 +173,8 @@ class Test_Api_Nominatim_test_parametrize:
         ('json', '82,689336', '-31.809395', '22', '1'),  # запятая вместо точки
         ('jsonv2', '-24.743005', '45.394554', 'abc', '0'),  # нечисловое значение zoom
         ('geojson', '10.239005', '-31.809395', '1', 'true'),  # строковое значение addressdetails
-        ('Кириллица', '-24.743005', '35.390495', '1', '1'),  # Кириллица в формате
-        ('München', '-24.743005', '35.390495', '0', '0'),  # Unicode в формате
+        ('кириллица', '-24.743005', '35.390495', '1', '1'),  # Кириллица в формате
+        ('münchen', '-24.743005', '35.390495', '0', '0'),  # Unicode в формате
         ])
     @allure.story("Обратные геокодирование по параметризации (ddt)")
     @allure.title("Получения полного списка стран по параматризации reverse")
@@ -187,16 +188,16 @@ class Test_Api_Nominatim_test_parametrize:
         with allure.step("Проверка валдиности формата"):
             valid_formats = ["xml", "geojson", "geocodejson", "json", "jsonv2"]
             assert format is not None, f"Формат не может быть None, format: {format}"
-            assert format and format.strip(), f"Формат не может быть пустой строкой или состоять только из пробелов. format: {format}"
-            assert format and format.lower(), f"Формат должен быть в низком регистре."
+            assert format == format.strip(), f"Формат не может быть пустой строкой или состоять только из пробелов. format: {format}"
+            assert format.islower(), f"Формат должен быть в нижнем регистре."
             normalized_format = format.lower().strip()
             assert normalized_format in valid_formats, f"Формат должен быть одним из {valid_formats}. Получено: '{format}'"
         with allure.step("Проверка широты"):
-            assert lat and lat.strip(), f"Широта не должна быть пустой. LAT: {lat}"
+            assert lat == lat.strip(), f"Широта не должна быть пустой. LAT: {lat}"
             assert lat != "0", f"Широта не должна быть равна 0. LAT: {lat}"
             assert lat != " ", f"Долгота не должна содержать пробел. LON: {lat}"
         with allure.step("Проверка долготы"):
-            assert lon and lon.strip(), f"Долгота не должна быть пустой. LON: {lon}"
+            assert lon == lon.strip(), f"Долгота не должна быть пустой. LON: {lon}"
             assert lon != "0", f"Долгота не должна быть равна 0. LON: {lon}"
             assert lon != " ", f"Долгота не должна содержать пробел. LON: {lon}"
         allure.attach(f"Ответ {response}", name="Поиск параматризации", attachment_type=allure.attachment_type.JSON)

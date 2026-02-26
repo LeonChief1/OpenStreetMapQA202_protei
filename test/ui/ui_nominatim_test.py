@@ -11,7 +11,6 @@ from pages.MainPage import MainPage
 @allure.story("Проверка сайта на поисковик")
 @allure.title("проверка на поиск")
 @pytest.mark.usefixtures("browser")
-@pytest.mark.skip()
 @pytest.mark.parametrize('country', [
     ('New-Yourk'),
     ('Barbados'),

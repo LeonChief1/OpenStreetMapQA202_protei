@@ -29,9 +29,11 @@ def browser():
             chrome_options.add_argument("--disable-dev-shm-usage")
             service = Service("/usr/local/bin/chromedriver_127")
             driver = webdriver.Chrome(service=service, options=chrome_options)
+            driver.set_window_position(0, 0)
         else:
             driver = webdriver.Firefox(
                 service=FirefoxService(GeckoDriverManager().install()))
+            driver.set_window_position(0, 0)
 
         driver.implicitly_wait(timeout)
         driver.maximize_window()

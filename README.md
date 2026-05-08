@@ -19,6 +19,7 @@
 - allure
 - configparser
 - json
+- pyautogui
 
 ### Структура:
 - ./test - тесты

@@ -38,8 +38,10 @@ def ui_nominatim_test_search(browser, country):
     main_page.save_screenshot(country)
 
     with allure.step(f"Проверить, что URL содержит параметр поиска для '{country}'"):
-        assert "ui/search.html" in current_url, f"URL должен содержать 'ui/search.html'"
-        assert f"q={country}" in current_url, f"URL должен содержать 'q={country}'"
+        from urllib.parse import unquote
+        decoded_url = unquote(current_url)
+        assert "ui/search.html" in current_url
+        assert f"q={country}" in decoded_url, f"Поисковый запрос '{country}' не найден в URL: {decoded_url}"
 
 
 @allure.epic("ui_nominatim_test")

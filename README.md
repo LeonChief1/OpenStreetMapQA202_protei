@@ -42,3 +42,6 @@
 4. `chmod +x chromedriver-linux64/chromedriver`
 5. Копируем в системный путь `sudo mv chromedriver-linux64/chromedriver /usr/local/bin/chromedriver_127`
 6. Проверяем: `chromedriver_127 --version`
+
+P.S. Если после автотеста перестала работать смена расскладки с англиского на русский, выполните команду в терминале:
+`setxkbmap -layout us,ru -option grp:ctrl_alt_toggle &> /dev/null`

@@ -27,6 +27,7 @@ def browser():
             chrome_options.binary_location = "/usr/bin/chromium-gost"
             chrome_options.add_argument("--no-sandbox")
             chrome_options.add_argument("--disable-dev-shm-usage")
+            chrome_options.add_argument("--incognito")
             service = Service("/usr/local/bin/chromedriver_127")
             driver = webdriver.Chrome(service=service, options=chrome_options)
             driver.set_window_position(0, 0)

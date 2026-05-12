@@ -1,5 +1,4 @@
 import allure
-import time
 import pytest
 from pages.base_page import NominatimPage
 
@@ -24,6 +23,7 @@ from pages.base_page import NominatimPage
 @allure.severity("blocker")
 @allure.story("Проверка сайта на поисковик через pyautogui")
 @allure.title("проверка на поиск")
+@pytest.mark.order(5)
 @pytest.mark.usefixtures("browser")
 @pytest.mark.parametrize('country', [
     ('New-Yourk'),

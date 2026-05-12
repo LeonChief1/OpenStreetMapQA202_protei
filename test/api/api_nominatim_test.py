@@ -1,5 +1,3 @@
-from http.client import responses
-
 import allure
 import pytest
 
@@ -8,6 +6,7 @@ from api.NominatimOSM import NominatimOSM
 
 @allure.epic("api_nominatim_status")
 @allure.severity("blocker")
+@pytest.mark.order(1)
 @pytest.mark.api
 class Test_Api_Nominatim_test_status:
 
@@ -37,6 +36,7 @@ class Test_Api_Nominatim_test_status:
 
 @allure.epic("api_nominatim_parametrized")
 @allure.severity("blocker")
+@pytest.mark.order(2)
 @pytest.mark.api
 class Test_Api_Nominatim_test_parametrize:
 

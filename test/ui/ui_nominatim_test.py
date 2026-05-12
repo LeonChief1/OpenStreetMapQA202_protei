@@ -1,5 +1,3 @@
-from time import sleep
-
 import pytest
 
 import allure
@@ -10,6 +8,7 @@ from pages.MainPage import MainPage
 @allure.severity("blocker")
 @allure.story("Проверка сайта на поисковик")
 @allure.title("проверка на поиск")
+@pytest.mark.order(3)
 @pytest.mark.usefixtures("browser")
 @pytest.mark.parametrize('country', [
     ('New-Yourk'),
@@ -48,6 +47,7 @@ def ui_nominatim_test_search(browser, country):
 @allure.severity("blocker")
 @allure.story("Проверка сайта на revers")
 @allure.title("проверка на reverse")
+@pytest.mark.order(4)
 @pytest.mark.usefixtures("browser")
 @pytest.mark.parametrize('lat, lon, zoom', [
     ('-9.911374', '-53.580959', 0),

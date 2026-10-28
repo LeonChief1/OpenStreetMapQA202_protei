@@ -17,3 +17,15 @@ PyYAML==5.3.1
 
 # === Утилиты ===
 python-dateutil==2.8.2
+
+# === PyAutoGUI + зависимости ===
+PyAutoGUI==0.9.54
+Pillow==10.4.0
+MouseInfo==0.1.3
+PyGetWindow==0.0.9
+PyMsgBox==2.0.1
+PyRect==0.2.0
+PyScreeze==1.0.1
+pytweening==1.2.0
+python-xlib==0.33
+pyperclip==1.11.0

@@ -17,8 +17,8 @@ class DataProvider:
         val = self.data.get(prop)
         return int(val)
 
-    def get_user_agent(self) -> str:
-        return self.data.get("User-Agent")
+    def get_reverse_cases(self):
+        return self.data.get("reverse_cases", [])
 
-    def get_accept(self) -> str:
-        return self.data.get("Accept")
+    def get_search_cases(self):
+        return self.data.get("search_cases", [])

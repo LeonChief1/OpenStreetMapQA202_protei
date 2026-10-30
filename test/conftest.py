@@ -48,7 +48,8 @@ def browser():
 def api_client(api_context) -> NominatimOSM:
     return NominatimOSM(
         ConfigProvider().get_api_url(),
-        api_context
+        api_context,
+        headers=ConfigProvider().get_api_headers()
     )
 
 @pytest.fixture

@@ -18,11 +18,8 @@ htmlcov/
 .cache
 allure-results/
 allure-report/
+allure-files/
 *-report/
-
-# === Config ===
-test_config.ini
-test_data.json
 
 # === IDE (PyCharm) ===
 .idea/workspace.xml

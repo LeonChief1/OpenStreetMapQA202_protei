@@ -1,4 +1,1266 @@
 {
-    "User-Agent": "MyGeocodingApp/1.0 (contact@mycompany.com)",
-    "Accept": "application/json"
+  "reverse_cases": [
+    {
+      "format": "xml",
+      "lat": "-9.911374",
+      "lon": "-53.580959",
+      "zoom": "18",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Peixoto de Azevedo"
+      }
+    },
+    {
+      "format": "xml",
+      "lat": "82.689336",
+      "lon": "-31.809395",
+      "zoom": "50",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Гренландия"
+      }
+    },
+    {
+      "format": "xml",
+      "lat": "-24.743005",
+      "lon": "-32.115876",
+      "zoom": "30",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "xml",
+      "lat": "10.239005",
+      "lon": "35.390495",
+      "zoom": "22",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Metekel"
+      }
+    },
+    {
+      "format": "xml",
+      "lat": "-37.164761",
+      "lon": "45.394554",
+      "zoom": "1",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "json",
+      "lat": "82.689336",
+      "lon": "-32.115876",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Гренландия"
+      }
+    },
+    {
+      "format": "json",
+      "lat": "-24.743005",
+      "lon": "35.390495",
+      "zoom": "1",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "json",
+      "lat": "10.239005",
+      "lon": "45.394554",
+      "zoom": "18",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Berbera"
+      }
+    },
+    {
+      "format": "json",
+      "lat": "-37.164761",
+      "lon": "-53.580959",
+      "zoom": "50",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "json",
+      "lat": "-9.911374",
+      "lon": "-31.809395",
+      "zoom": "30",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "jsonv2",
+      "lat": "-24.743005",
+      "lon": "45.394554",
+      "zoom": "50",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Bevitiky"
+      }
+    },
+    {
+      "format": "jsonv2",
+      "lat": "10.239005",
+      "lon": "-53.580959",
+      "zoom": "30",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "jsonv2",
+      "lat": "-37.164761",
+      "lon": "-31.809395",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "jsonv2",
+      "lat": "-9.911374",
+      "lon": "-32.115876",
+      "zoom": "1",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "jsonv2",
+      "lat": "82.689336",
+      "lon": "35.390495",
+      "zoom": "18",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "geojson",
+      "lat": "10.239005",
+      "lon": "-31.809395",
+      "zoom": "1",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "geojson",
+      "lat": "-37.164761",
+      "lon": "-32.115876",
+      "zoom": "18",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "geojson",
+      "lat": "-9.911374",
+      "lon": "35.390495",
+      "zoom": "50",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Madaba"
+      }
+    },
+    {
+      "format": "geojson",
+      "lat": "82.689336",
+      "lon": "45.394554",
+      "zoom": "30",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "geojson",
+      "lat": "-24.743005",
+      "lon": "-53.580959",
+      "zoom": "22",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": ""
+      }
+    },
+    {
+      "format": "geocodejson",
+      "lat": "-37.164761",
+      "lon": "35.390495",
+      "zoom": "30",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "geocodejson",
+      "lat": "-9.911374",
+        "lon": "45.394554",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "geocodejson",
+      "lat": "82.689336",
+      "lon": "-53.580959",
+      "zoom": "1",
+      "addressdetails": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Гренландия"
+      }
+    },
+    {
+      "format": "geocodejson",
+      "lat": "-24.743005",
+      "lon": "-31.809395",
+      "zoom": "18",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    {
+      "format": "geocodejson",
+      "lat": "10.239005",
+      "lon": "-32.115876",
+      "zoom": "50",
+      "addressdetails": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": null
+      }
+    },
+    "// Дополнительные проверки с пустыми значениями",
+    {
+      "format": " ",
+      "lat": "10.239005",
+      "lon": "35.390495",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "пустой формат"
+    },
+    {
+      "format": "xml",
+      "lat": " ",
+      "lon": "-53.580959",
+      "zoom": "18",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "пустая широта"
+    },
+    {
+      "format": "json",
+      "lat": "82.689336",
+      "lon": " ",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "пустая долгота"
+    },
+    {
+      "format": "jsonv2",
+      "lat": "-24.743005",
+      "lon": "45.394554",
+      "zoom": " ",
+      "addressdetails": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "пустой zoom"
+    },
+    {
+      "format": "geojson",
+      "lat": "10.239005",
+      "lon": "-31.809395",
+      "zoom": "1",
+      "addressdetails": "",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "пустой addressdetails"
+    },
+    {
+      "format": "geocodejson",
+      "lat": " ",
+      "lon": " ",
+      "zoom": "50",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "пустые координаты"
+    },
+    {
+      "format": " ",
+      "lat": " ",
+      "lon": " ",
+      "zoom": " ",
+      "addressdetails": " ",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "все поля пустые"
+    },
+    {
+      "format": "xml",
+      "lat": "0",
+      "lon": "0",
+      "zoom": "18",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "нулевые координаты"
+    },
+    {
+      "format": "json",
+      "lat": "-90.000000",
+      "lon": "-180.000000",
+      "zoom": "50",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "крайние значения координат"
+    },
+    {
+      "format": "jsonv2",
+      "lat": "90.000000",
+      "lon": "180.000000",
+      "zoom": "1",
+      "addressdetails": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "крайние значения координат"
+    },
+    {
+      "format": "geojson",
+      "lat": "91.000000",
+      "lon": "35.390495",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "широта за пределами допустимого"
+    },
+    {
+      "format": "geocodejson",
+      "lat": "10.239005",
+      "lon": "181.000000",
+      "zoom": "18",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "долгота за пределами допустимого"
+    },
+    {
+      "format": "xml",
+      "lat": "-9.911374",
+      "lon": "-53.580959",
+      "zoom": "-1",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "отрицательный zoom"
+    },
+    {
+      "format": "json",
+      "lat": "82.689336",
+      "lon": "-31.809395",
+      "zoom": "100",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "слишком большой zoom"
+    },
+    {
+      "format": "jsonv2",
+      "lat": "-24.743005",
+      "lon": "-32.115876",
+      "zoom": "30",
+      "addressdetails": "2",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "недопустимое значение addressdetails"
+    },
+    {
+      "format": "invalid_format",
+      "lat": "10.239005",
+      "lon": "35.390495",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "невалидный формат"
+    },
+    {
+      "format": "XML",
+      "lat": "10.239005",
+      "lon": "35.390495",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "формат в верхнем регистре"
+    },
+    {
+      "format": "Json",
+      "lat": "10.239005",
+      "lon": "35.390495",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "формат с заглавной буквы"
+    },
+    {
+      "format": "xml",
+      "lat": "10.239.005",
+      "lon": "35.390495",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "невалидный формат числа"
+    },
+    {
+      "format": "json",
+      "lat": "82,689336",
+      "lon": "-31.809395",
+      "zoom": "22",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "запятая вместо точки"
+    },
+    {
+      "format": "jsonv2",
+      "lat": "-24.743005",
+      "lon": "45.394554",
+      "zoom": "abc",
+      "addressdetails": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "нечисловое значение zoom"
+    },
+    {
+      "format": "geojson",
+      "lat": "10.239005",
+      "lon": "-31.809395",
+      "zoom": "1",
+      "addressdetails": "true",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "строковое значение addressdetails"
+    },
+    {
+      "format": "кириллица",
+      "lat": "-24.743005",
+      "lon": "35.390495",
+      "zoom": "1",
+      "addressdetails": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "Кириллица в формате"
+    },
+    {
+      "format": "münchen",
+      "lat": "-24.743005",
+      "lon": "35.390495",
+      "zoom": "0",
+      "addressdetails": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "Unicode в формате"
+    }
+  ],
+  "search_cases": [
+    " // Валидные проверки",
+    {
+      "q": "Barbados",
+      "format": "geojson",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 400,
+        "name": "Barbados"
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "geocodejson",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Barbados"
+      }
+    },
+    {
+      "q": "Tuvalu",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Tuvalu"
+      }
+    },
+    {
+      "q": "Tuvalu",
+      "format": "jsonv2",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Tuvalu"
+      }
+    },
+    {
+      "q": "Tuvalu",
+      "format": "geojson",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Tuvalu"
+      }
+    },
+    {
+      "q": "Tuvalu",
+      "format": "geocodejson",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Tuvalu"
+      }
+    },
+    {
+      "q": "Tuvalu",
+      "format": "xml",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Tuvalu"
+      }
+    },
+    {
+      "q": "Chile",
+      "format": "jsonv2",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Chile"
+      }
+    },
+    {
+      "q": "Chile",
+      "format": "geojson",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Chile"
+      }
+    },
+    {
+      "q": "Chile",
+      "format": "geocodejson",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Chile"
+      }
+    },
+    {
+      "q": "Chile",
+      "format": "xml",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Chile"
+      }
+    },
+    {
+      "q": "Chile",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Chile"
+      }
+    },
+    {
+      "q": "Afghanistan",
+      "format": "geojson",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Afghanistan"
+      }
+    },
+    {
+      "q": "Afghanistan",
+      "format": "geocodejson",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Afghanistan"
+      }
+    },
+    {
+      "q": "Afghanistan",
+      "format": "xml",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Afghanistan"
+      }
+    },
+    {
+      "q": "Afghanistan",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Afghanistan"
+      }
+    },
+    {
+      "q": "Afghanistan",
+      "format": "jsonv2",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Afghanistan"
+      }
+    },
+    {
+      "q": "Honduras",
+      "format": "geocodejson",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Honduras"
+      }
+    },
+    {
+      "q": "Honduras",
+      "format": "xml",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Honduras"
+      }
+    },
+    {
+      "q": "Honduras",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Honduras"
+      }
+    },
+    {
+      "q": "Honduras",
+      "format": "jsonv2",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Honduras"
+      }
+    },
+    {
+      "q": "Honduras",
+      "format": "geojson",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Honduras"
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "xml",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Barbados"
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "xml",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Barbados"
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Barbados"
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "jsonv2",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Barbados"
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "geojson",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Barbados"
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "geocodejson",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["positive"],
+      "expected": {
+        "status_code": 200,
+        "name": "Barbados"
+      }
+    },
+    " // Проверки пустых значений",
+    {
+      "q": " ",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": " ",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": " ",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": " ",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": " ",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": " ",
+      "format": " ",
+      "polygon": " ",
+      "addressdetails": " ",
+      "limit": " ",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    " // Проверки с некорректными значениями",
+    {
+      "q": "None",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "null",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Barbados",
+      "format": "invalid_format",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    " // Проверки граничных значений для limit",
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["boundary"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["boundary"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "50",
+      "tags": ["boundary"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "999",
+      "tags": ["boundary"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    " // Проверки с пробелами",
+    {
+      "q": "  Barbados  ",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "  json  ",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    " // Проверки со специальными символами",
+    {
+      "q": "Test&City",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test-City",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test_City",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    " // Проверки нестандартных значений булевых параметров",
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "true",
+      "addressdetails": "false",
+      "limit": "10",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "TRUE",
+      "addressdetails": "FALSE",
+      "limit": "5",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "json",
+      "polygon": "2",
+      "addressdetails": "3",
+      "limit": "10",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    " // Проверки с очень длинными строками",
+    {
+      "q": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "0",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    {
+      "q": "Test",
+      "format": "jsonjsonjsonjsonjsonjsonjsonjsonjsonjson",
+      "polygon": "0",
+      "addressdetails": "1",
+      "limit": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      }
+    },
+    " // Проверки кодировки",
+    {
+      "q": "кириллица",
+      "format": "json",
+      "polygon": "1",
+      "addressdetails": "1",
+      "limit": "1",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "Кириллица в запросе"
+    },
+    {
+      "q": "münchen",
+      "format": "json",
+      "polygon": "0",
+      "addressdetails": "0",
+      "limit": "0",
+      "tags": ["negative"],
+      "expected": {
+        "status_code": 400,
+        "name": null
+      },
+      "note": "Unicode символы"
+    }
+  ]
 }

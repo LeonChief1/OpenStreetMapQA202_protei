@@ -21,3 +21,15 @@ class ConfigProvider:
 
     def get_api_url(self) -> str:
         return self.config["api"].get("base_url")
+
+    def get_api_user_agent(self) -> str:
+        return self.config["api"].get("user_agent")
+
+    def get_api_accept(self) -> str:
+        return self.config["api"].get("accept")
+
+    def get_api_headers(self) -> dict:
+        return {
+            "User-Agent": self.get_api_user_agent(),
+            "Accept": self.get_api_accept()
+        }

@@ -5,7 +5,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from configuration.ConfigProvired import ConfigProvider
-from test_data.DataProvider import DataProvider
 
 
 class MainPage:
@@ -14,8 +13,6 @@ class MainPage:
         """Конструктор"""
         self.__driver = driver
         self.url = ConfigProvider().get_ui_url()
-        self.data = DataProvider().get_user_agent()
-        self.data = DataProvider().get_accept()
 
     @allure.step("Перейти на страницу Nominatim")
     def go(self) -> None:
